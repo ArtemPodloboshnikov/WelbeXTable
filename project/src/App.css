@@ -1,0 +1,9 @@
+.header
+{
+  display: grid;
+  grid-auto-flow: column;
+  grid-column: 1 / 4;
+  background-color: var(--black);
+  justify-items: center;
+  padding: 10px;
+}

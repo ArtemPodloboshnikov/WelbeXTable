@@ -1,0 +1,16 @@
+.table 
+{
+    grid-column: 2 / 3;
+    border-collapse: collapse;
+    text-align: center;
+}
+.table > tr:nth-child(2n)
+{
+    background-color: var(--gray);
+    color: var(--white);
+}
+.table > tr:first-child
+{
+    background-color: var(--black);
+    color: var(--white);
+}

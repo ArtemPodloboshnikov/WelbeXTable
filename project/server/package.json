@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "This is a test assignment for hiring",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtemPodloboshnikov/WelbeXTable.git"
+  },
+  "author": "Artem Podloboshnikov <artemps777@yandex.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArtemPodloboshnikov/WelbeXTable/issues"
+  },
+  "homepage": "https://github.com/ArtemPodloboshnikov/WelbeXTable#readme",
+  "dependencies": {
+    "pg": "^8.7.1"
+  }
+}
