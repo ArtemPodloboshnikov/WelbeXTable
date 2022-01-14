@@ -2,8 +2,7 @@ import React, {useEffect, useState } from 'react';
 
 import './App.css';
 import constants, 
-{COUNT_PAGES_STORAGE, COUNT_DATA_PAGE, COLUMNS_NAME, LAST_PAGE_STORAGE} from './constants';
-import Search from './functions/Search';
+{COLUMNS_NAME} from './constants';
 import UpdateTableEffect from './functions/UpdateTableEffect';
 import SearchEffect from './functions/SearchEffect';
 import Select from './components/Select/Select';

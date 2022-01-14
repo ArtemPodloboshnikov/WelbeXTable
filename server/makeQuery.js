@@ -10,6 +10,11 @@ function createNewClient() {
     });
 }
 
+
+/* 
+    Makes a request to the database. 
+    And Returns the response
+*/
 function makeQuery(query, callback) {
     const client = createNewClient();
     client.connect();

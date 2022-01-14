@@ -1,5 +1,11 @@
 import NumberParse from "./NumberParse";
 
+/*
+    Converts a string to a date. 
+    If the value cannot be converted to a date, 
+    it will return the same value
+
+*/
 function DateParse(value: string): string
 {
     if (NumberParse(value))

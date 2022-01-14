@@ -29,9 +29,6 @@ const requestListener = function (req, res) {
         }
     }
 
-    // res.writeHead(200);
-    // res.end(JSON.stringify({'mes': 'Hey!'}));
-
 };
 
 const server = http.createServer(requestListener);

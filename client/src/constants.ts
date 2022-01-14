@@ -1,4 +1,5 @@
 const server_url = 'http://localhost:8000/';
+
 export enum OPERATORS{
 
     MORE = '>',
@@ -45,9 +46,9 @@ const constants = {
     },
     CONDITION: {
         values: {
-            [OPERATORS.MORE]: '>', 
-            [OPERATORS.LESS]: '<', 
-            [OPERATORS.EQUALLY]: '='
+            [OPERATORS.MORE]: OPERATORS.MORE, 
+            [OPERATORS.LESS]: OPERATORS.LESS, 
+            [OPERATORS.EQUALLY]: OPERATORS.EQUALLY
         },
         name: 'search_condition',
         placeholder: 'Условие'

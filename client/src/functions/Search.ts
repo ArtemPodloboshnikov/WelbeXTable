@@ -13,6 +13,11 @@ type SearchType = {
 type MoreAndLessType = Omit<SearchType, "data"|"condition"> 
 & {value: {[key: string]: string}, operator: OPERATORS.MORE|OPERATORS.LESS}
 
+/*
+    Searches the current page and returns a filtered 
+    array of values that are on the current page
+
+*/
 function Search ({data, search_word, condition, column}:SearchType): {[key: string]: string}[]
 {
     switch (condition)

@@ -1,5 +1,10 @@
 const constants = require('./constants');
 
+
+/*
+    Adds various parameters to the DB query. 
+    Returns a request with parameters
+*/
 function additionalParameters(pathname, query){
 
     const query_parameters = constants.QUERY[pathname];

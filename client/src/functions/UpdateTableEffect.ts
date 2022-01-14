@@ -17,6 +17,12 @@ export type UpdateArguments = {
     readonly valueSearchInput: string
 }
 
+/*
+    This is a function for useEffect that updates the table 
+    when you go to the page and also searches by DB if the 
+    search on the current page fails
+
+*/
 function UpdateTable({tableData, setTableData, page, 
                      valueColumn, valueCondition, valueSearchInput}:UpdateArguments)
 {
