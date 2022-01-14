@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Props from './Props';
 import classes from './Select.module.css';
 
-const Select: React.FC<Props> = ({placeholder, onChange, name, options, value}) =>{
+const Select: React.FC<Props> = ({placeholder, onChange, name, options, value, exception}) =>{
     
     const formValue = (event: React.ChangeEvent<HTMLSelectElement>) => {
         onChange(event.target.value.trim());
@@ -19,11 +19,14 @@ const Select: React.FC<Props> = ({placeholder, onChange, name, options, value}) 
             <option selected={true} key="option_placeholder" value="">{placeholder}</option>
             {Object.keys(options).map((option_name)=>{
                 
-                return <option key={option_name} value={option_name}>{options[option_name]}</option>
+                if (exception !== option_name)
+                {
+                    return <option key={option_name} value={option_name}>{options[option_name]}</option>
+                }
             
             })}
         </select>
     )
 }
 
-export default Select;
+export default React.memo(Select);

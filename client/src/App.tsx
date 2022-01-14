@@ -1,10 +1,14 @@
 import React, {useEffect, useState } from 'react';
 
 import './App.css';
-import constants, {COUNT_PAGES_STORAGE} from './constants';
+import constants, 
+{COUNT_PAGES_STORAGE, COUNT_DATA_PAGE, COLUMNS_NAME, LAST_PAGE_STORAGE} from './constants';
 import Search from './functions/Search';
+import UpdateTableEffect from './functions/UpdateTableEffect';
+import SearchEffect from './functions/SearchEffect';
 import Select from './components/Select/Select';
 import Input from './components/Input/Input';
+import Button from './components/Button/Button';
 import Table from './components/Table/Table';
 import Pages from './components/Pages/Pages';
 
@@ -17,64 +21,47 @@ function App() {
   const [tableData, setTableData] = useState<{[key: string]: string}[]>([{}]);
   const [page, setPage] = useState<number>(1);
 
-  useEffect(()=>{
+  useEffect(SearchEffect({
 
-    const data: {[key: string]: string}[] = JSON.parse(String(localStorage.getItem(constants.TABLE_STORAGE)));
-      setTableData(Search({
-        data: data, 
-        search_word: valueSearchInput, 
-        condition: valueCondition, 
-        column: valueColumn
-      }))
-        console.log(valueSearchInput)
-        console.log(valueCondition)
-        console.log(valueColumn)
-      
-    
+    setTableData,
+    valueColumn,
+    valueCondition,
+    valueSearchInput
 
-  }, [valueSearchInput, valueCondition, valueColumn])
+  }), [valueSearchInput, valueCondition, valueColumn])
 
-  useEffect(()=>{
+  useEffect(UpdateTableEffect({
+    tableData,
+    setTableData,
+    page,
+    valueColumn,
+    valueCondition,
+    valueSearchInput
 
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    async function getPageData()
-    {
-      console.log(constants.QUERIES.pageData + page)
-      const res = await fetch(constants.QUERIES.pageData + Number(localStorage.getItem(COUNT_PAGES_STORAGE)), {signal: signal})
-      const json = await res.json();
-      localStorage.setItem(constants.TABLE_STORAGE, JSON.stringify(json))
-      console.log(json)
-      setTableData(json);
-    }
-
-    async function getCountData()
-    {
-      const res = await fetch(constants.QUERIES.getCount, {signal: signal})
-      let count_data: string = await res.text();
-      let count_pages = Number(count_data.replaceAll(`"`, '')) / 5;
-      console.log(Math.ceil(count_pages))
-      localStorage.setItem(COUNT_PAGES_STORAGE, String(Math.ceil(count_pages)))
-    }
-
-    getCountData();
-    getPageData();
-
-    return ()=> controller.abort();
-
-
-  }, [page])
+  }), [page, tableData])
 
   return (
     <>
       <header className="header">
+          <Button
+          name={constants.RESET.name}
+          text={constants.RESET.text}
+          onClick={()=>{
+
+            setTableData([{}]);
+            setValueColumn('');
+            setValueCondition('');
+            setValueSearchInput('');
+          }}
+          />
+
           <Select
           name={constants.COLUMNS.name}
           options={constants.COLUMNS.titles}
           placeholder={constants.COLUMNS.placeholder}
           value={valueColumn}
           onChange={setValueColumn}
+          exception={COLUMNS_NAME.DATE}
           />
 
           <Select

@@ -1,0 +1,12 @@
+.button
+{
+    color: var(--white);
+    background-color: var(--black);
+    border: 5px solid var(--white);
+    cursor: pointer;
+}
+.button:hover
+{
+    color: var(--black);
+    background-color: var(--white);
+}

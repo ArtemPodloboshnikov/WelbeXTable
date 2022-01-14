@@ -13,13 +13,29 @@ function createNewClient() {
 function makeQuery(query, callback) {
     const client = createNewClient();
     client.connect();
-    console.log(query)
+
     client.query(query, (err, res) => {
         
-        let answer = res.rows;
-        if (answer[0].count !== undefined)
+        console.log(res)
+        let answer;
+        if (res !== undefined)
         {
-            answer = answer[0].count
+            answer = res.rows;
+            if (answer.length != 0)
+            {
+                if (answer[0].count !== undefined)
+                {
+                    answer = answer[0].count
+                }
+            }
+            else
+            {
+                answer = [null];
+            }
+        }
+        else
+        {
+            answer = [null];
         }
         client.end();
         if (err)

@@ -23,7 +23,6 @@ function Search ({data, search_word, condition, column}:SearchType): {[key: stri
             const regexp = new RegExp(`^${search_word}${postfix}`, 'i');
             return data.filter((value)=>{
                 
-                console.log(value[column])
                 return (regexp.test(value[column]))
     
             })

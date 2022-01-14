@@ -35,4 +35,4 @@ const Pages: React.FC<Props> = ({current_page, onChange}) => {
     
 }
 
-export default Pages;
+export default React.memo(Pages);
