@@ -1,16 +1,9 @@
 const constants = {
 
-    URLS: {
-        
-        getAll: '/getAll'
-    },
     REQUEST: {
 
-        getAll: 'SELECT * FROM test'
-    },
-    RESPONSE: {
-
-        get: 'GET'
+        getCount: 'SELECT count(*) FROM test',
+        getPageData: 'SELECT * FROM test LIMIT 5 OFFSET ' 
     }
 
 }

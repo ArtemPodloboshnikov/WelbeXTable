@@ -5,6 +5,8 @@ export enum OPERATORS{
     LESS = 'less',
     EQUALLY = 'equally'
 }
+
+export const COUNT_PAGES_STORAGE = 'count_pages';
 const constants = {
 
     TABLE_STORAGE: 'table_data',
@@ -34,7 +36,8 @@ const constants = {
     },
     QUERIES: {
         
-        all: `${server_url}getAll`
+        pageData: `${server_url}getPageData?offset=`,
+        getCount: `${server_url}getCount`
     }
 }
 

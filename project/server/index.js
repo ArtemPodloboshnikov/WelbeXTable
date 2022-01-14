@@ -1,4 +1,5 @@
 const http = require('http');
+const url = require('url');
 
 const constants = require('./constants');
 const makeQuery = require('./makeQuery');
@@ -11,26 +12,25 @@ const requestListener = function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
- 
-    switch (req.url)
+    
+    for (let [route, query] of Object.entries(constants.REQUEST))
     {
-        case constants.URLS.getAll:
+        urlRequest = url.parse(req.url, true);
+        console.log(urlRequest)
+        if (urlRequest.pathname == `/${route}`)
         {
-            makeQuery(constants.REQUEST.getAll, (data)=>{
+            makeQuery(query + ((urlRequest.query.offset !== undefined)?urlRequest.query.offset:''), (data)=>{
 
                 res.writeHead(200);
                 res.end(JSON.stringify(data));
                 
             })
-            break;
         }
-        default:
-        {
-            res.writeHead(200);
-            res.end(JSON.stringify({'mes': 'Hey!'}));
-        }   
-    
     }
+
+    // res.writeHead(200);
+    // res.end(JSON.stringify({'mes': 'Hey!'}));
+
 };
 
 const server = http.createServer(requestListener);
