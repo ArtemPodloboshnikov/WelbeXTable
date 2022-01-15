@@ -16,12 +16,15 @@ const Select: React.FC<Props> = ({placeholder, onChange, name, options, value, e
         onChange={formValue}
         name={name}
         >
-            <option selected={true} key="option_placeholder" value="">{placeholder}</option>
+            <option disabled={true} key={`${name}_placeholder`} value="">{placeholder}</option>
             {Object.keys(options).map((option_name)=>{
                 
                 if (exception !== option_name)
                 {
-                    return <option key={option_name} value={option_name}>{options[option_name]}</option>
+                    return <option key={`${name}_${option_name}`} 
+                    value={option_name}>
+                        {options[option_name]}
+                    </option>
                 }
             
             })}

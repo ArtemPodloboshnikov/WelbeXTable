@@ -1,8 +1,7 @@
 import React, {useEffect, useState } from 'react';
 
 import './App.css';
-import constants, 
-{COLUMNS_NAME} from './constants';
+import constants, {COLUMNS_NAME} from './constants';
 import UpdateTableEffect from './functions/UpdateTableEffect';
 import SearchEffect from './functions/SearchEffect';
 import Select from './components/Select/Select';
@@ -81,6 +80,7 @@ function App() {
       <Table
       data={[{...constants.COLUMNS.titles},
             ...tableData]}
+      name={constants.TABLE.name}
       />
       <Pages
       current_page={page}

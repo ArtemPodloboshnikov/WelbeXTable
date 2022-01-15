@@ -4,12 +4,12 @@
     border-collapse: collapse;
     text-align: center;
 }
-.table > tr:nth-child(2n)
+.table tr:nth-child(2n)
 {
     background-color: var(--gray);
     color: var(--white);
 }
-.table > tr:first-child
+.table th
 {
     background-color: var(--black);
     color: var(--white);

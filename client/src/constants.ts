@@ -34,6 +34,10 @@ export const ERROR_MESSAGE = {
 
 const constants = {
 
+    TABLE: {
+
+        name: 'table'
+    },
     COLUMNS: {
         titles: {
             [COLUMNS_NAME.DATE]: 'Дата', 
